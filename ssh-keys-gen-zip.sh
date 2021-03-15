@@ -73,11 +73,7 @@ if [ "$interactive" = "1" ]; then
 
 fi
 
-if [ -d ~/ssh-dev-keys ]; then
-    cd ~/ssh-dev-keys && mkdir $firstname
-else
-    mkdir ~/ssh-dev-keys && mkdir ~/ssh-dev-keys/$firstname
-fi
+mkdir -p ~/ssh-dev-keys/$firstname
 
 ssh-keygen -t ed25519 -P "" -C "$email" -f ~/ssh-dev-keys/$firstname/$firstname.$lastname
 
