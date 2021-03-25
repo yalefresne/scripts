@@ -21,7 +21,7 @@ if [ $# = 0 ]; then
     usage
 fi
 
-while [ "$1" != "" ]; do
+while [ ! -z $1 ]; do
     case $1 in
         -f | --firstname )      shift
                                 firstname="$(echo -e "$1" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')"
