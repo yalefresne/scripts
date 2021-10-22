@@ -1,4 +1,5 @@
 import argparse
+import color
 import os
 import sys
 
@@ -42,14 +43,14 @@ parser.add_argument(
 args = parser.parse_args()
 
 if(args.interactive):
-    args.first_name = str(input(f'Enter developer firstname (john): ') or 'john')
+    args.first_name = str(input(f'Enter developer firstname {color.CGREY}(john){color.CEND}: ') or 'john')
 
-    args.last_name = str(input(f'Enter developer lastname (Doe): ') or 'Doe')
+    args.last_name = str(input(f'Enter developer lastname {color.CGREY}(Doe){color.CEND}: ') or 'Doe')
 
-    args.email = str(input(f'Enter developer email (test@test.test): ') or 'test@test.test')
+    args.email = str(input(f'Enter developer email {color.CGREY}(test@test.test){color.CEND}: ') or 'test@test.test')
 
     args.password = str(
-        input(f'Enter password for zipped folder (12345): ') or '12345')
+        input(f'Enter password for zipped folder {color.CGREY}(12345){color.CEND}: ') or '12345')
 
     print('\n')
 
@@ -72,6 +73,6 @@ os.system(f'ssh-keygen -t ed25519 -P "" -C "{email}" -f {user_keys_path}/{user_k
 
 os.chdir(ssh_keys_dir_name)
 
-print(f'The {first_name} folder will be zipped with following passord: {password}')
+print(f'\n{color.CGREEN}The {first_name} folder will be zipped with following passord:{color.CEND} {password}')
 
 os.system(f'zip -P "{password}" -r {first_name}.zip {first_name}')
